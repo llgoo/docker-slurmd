@@ -14,4 +14,5 @@ RUN chmod +x /root/start.sh
 
 ADD etc/supervisord.d/slurmd.conf /etc/supervisor/conf.d/slurmd.conf
 
+EXPOSE 6818 60001-63000
 CMD ["/bin/bash","/root/start.sh"]
