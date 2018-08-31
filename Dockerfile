@@ -12,7 +12,7 @@ RUN rpm -ivh ${ROOT_RPMS}/slurm-${SLURM_VERSION}.el7.x86_64.rpm \
 ADD scripts/start.sh /root/start.sh
 RUN chmod +x /root/start.sh
 
-ADD etc/supervisord.d/slurmd.conf /etc/supervisor/conf.d/slurmd.conf
+ADD etc/supervisord.d/slurmd.ini /etc/supervisord.d/slurmd.ini
 
 EXPOSE 6818 60001-63000
 CMD ["/bin/bash","/root/start.sh"]
