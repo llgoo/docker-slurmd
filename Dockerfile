@@ -18,7 +18,7 @@ RUN mkdir /var/spool/slurmd /var/log/slurm && \
 
 ADD etc/supervisord.d/slurmd.ini /etc/supervisord.d/slurmd.ini
 
-VOLUME [ "/etc/slurm" ]
+VOLUME [ "/sys/fs/cgroup", "/etc/slurm" ]
 
 EXPOSE 6818 60001-63000
 
