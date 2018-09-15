@@ -16,10 +16,10 @@ RUN mkdir /var/spool/slurmd /var/log/slurm && \
   touch /var/log/slurm/slurmd.log && \
   chown slurm: /var/log/slurm/slurmd.log
 
-ADD scripts/start.sh /root/start.sh
-RUN chmod +x /root/start.sh
-
 ADD etc/supervisord.d/slurmd.ini /etc/supervisord.d/slurmd.ini
 
+VOLUME [ "/etc/slurm" ]
+
 EXPOSE 6818 60001-63000
-CMD ["/bin/bash","/root/start.sh"]
+
+CMD ["/usr/bin/supervisord", "--nodaemon"]
