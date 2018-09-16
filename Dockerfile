@@ -21,5 +21,3 @@ ADD etc/supervisord.d/slurmd.ini /etc/supervisord.d/slurmd.ini
 VOLUME [ "/sys/fs/cgroup", "/etc/slurm" ]
 
 EXPOSE 6818 60001-63000
-
-CMD ["/usr/bin/supervisord", "--nodaemon"]
