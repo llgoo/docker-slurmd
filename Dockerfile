@@ -14,10 +14,9 @@ RUN mkdir /var/spool/slurmd /var/log/slurm && \
   chown slurm: /var/spool/slurmd  /var/log/slurm && \
   chmod 755 /var/spool/slurmd  /var/log/slurm && \
   touch /var/log/slurm/slurmd.log && \
-  chown slurm: /var/log/slurm/slurmd.log
-
-ADD etc/supervisord.d/slurmd.ini /etc/supervisord.d/slurmd.ini
-
+  chown slurm: /var/log/slurm/slurmd.log && \
+  systemctl enable slurmd
+  
 VOLUME [ "/sys/fs/cgroup", "/etc/slurm" ]
 
 EXPOSE 6818 60001-63000
