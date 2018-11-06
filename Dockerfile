@@ -10,13 +10,13 @@ RUN rpm -ivh ${ROOT_RPMS}/slurm-${SLURM_VERSION}-1.el7.x86_64.rpm \
   rm -rf ${ROOT_RPMS}/*
 
 # Fixed ownership and permission of Slurm
-RUN mkdir /var/spool/slurmd /var/log/slurm && \
-  chown slurm: /var/spool/slurmd  /var/log/slurm && \
-  chmod 755 /var/spool/slurmd  /var/log/slurm && \
+RUN mkdir -p /var/spool/slurm/slurmd /var/log/slurm && \
+  chown slurm: /var/spool/slurm/slurmd  /var/log/slurm && \
+  chmod 755 /var/spool/slurm/slurmd  /var/log/slurm && \
   touch /var/log/slurm/slurmd.log && \
   chown slurm: /var/log/slurm/slurmd.log && \
   systemctl enable slurmd
-  
+
 VOLUME [ "/sys/fs/cgroup", "/etc/slurm" ]
 
 EXPOSE 6818 60001-63000
