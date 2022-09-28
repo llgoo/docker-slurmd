@@ -1,6 +1,6 @@
-FROM sinonkt/docker-slurmbase
+FROM gxm1015/slurm-base:v22.05.3
 
-LABEL maintainer="oatkrittin@gmail.com"
+LABEL maintainer="gxm.web@gmail.com"
 
 # Install slurm, slurmd, slurm-perlapi, slurm-pam_slurm
 RUN rpm -ivh ${ROOT_RPMS}/slurm-${SLURM_VERSION}-1.el7.x86_64.rpm \
@@ -10,8 +10,8 @@ RUN rpm -ivh ${ROOT_RPMS}/slurm-${SLURM_VERSION}-1.el7.x86_64.rpm \
   rm -rf ${ROOT_RPMS}/*
 
 # Fixed ownership and permission of Slurm
-RUN mkdir -p /var/spool/slurm/slurmd /var/run/slurm /var/log/slurm && \
-  chown slurm: /var/spool/slurm/slurmd  /var/run/slurm /var/log/slurm && \
+RUN mkdir -p /var/spool/slurm/slurmd /var/run/slurm /var/log/slurm /var/spool/slurmctld && \
+  chown slurm: /var/spool/slurm/slurmd  /var/run/slurm /var/log/slurm /var/spool/slurmctld && \
   chmod 755 /var/spool/slurm/slurmd /var/run/slurm /var/log/slurm && \
   touch /var/log/slurm/slurmd.log && \
   chown slurm: /var/log/slurm/slurmd.log && \
